@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Konfigurasi Tema Tailwind CSS v4 (@theme) Sesuai Modul 1 (Hal. 20)
+   dan DESIGN_BRIEF.md Platform Perakit PC (PayCom)
+   ========================================================================== */
+@theme {
+  --color-brand-bg: #121212;
+  --color-brand-surface: #1E1E1E;
+  --color-brand-hover: #2C2C2C;
+  --color-brand-blue: #3B82F6;
+  --color-brand-blue-hover: #2563EB;
+  --color-brand-success: #10B981;
+  --color-brand-danger: #EF4444;
+  --color-brand-warning: #F59E0B;
+  --color-brand-muted: #A1A1AA;
+}
+

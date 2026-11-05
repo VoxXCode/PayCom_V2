@@ -1,0 +1,19 @@
+{
+  "name": "paycom-pc-builder",
+  "version": "1.0.0",
+  "description": "Platform Perakit PC Cerdas untuk Pemula dengan Validasi Kompatibilitas Otomatis",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "pc-builder",
+    "compatibility",
+    "hardware",
+    "indonesia"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+
