@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PayCom BLD - Custom PC Builder &amp; Platform Perakit PC Cerdas</title>
-  <meta name="description" content="Platform perakit PC modern ala NZXT BLD dengan validasi otomatis socket processor, kompatibilitas RAM, kalkulator daya (Wattage), dan template Player Series.">
-  
+  <title>PayCom - Custom PC Builder &amp; Platform Perakit PC Cerdas</title>
+  <meta name="description"
+    content="Platform perakit PC modern ala NZXT dengan validasi otomatis socket processor, kompatibilitas RAM, kalkulator daya (Wattage), dan template Player Series.">
+
   <!-- Tailwind CSS v4 Browser Runtime (Modul 1) -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style type="text/tailwindcss">
@@ -22,42 +24,40 @@
       --color-brand-muted: #a1a1aa;
     }
   </style>
-  
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="src/main.css">
   <link rel="stylesheet" href="css/styles.css?v=5">
   <link rel="stylesheet" href="css/print.css">
 </head>
-<body class="bg-[#0c0c0e] text-white min-h-screen flex flex-col font-sans antialiased selection:bg-purple-600 selection:text-white">
+
+<body
+  class="bg-[#0c0c0e] text-white min-h-screen flex flex-col font-sans antialiased selection:bg-purple-600 selection:text-white">
 
   <!-- 1. NZXT Announcement Bar -->
   <aside class="nzxt-announcement-bar">
     <div class="announcement-inner">
       <span class="pulse-dot"></span>
-      <span>GARANSI 100% KOMPATIBILITAS HARDWARE &bull; ESTIMASI HARGA PASAR INDONESIA &bull; SIAP EKSPOR PDF TOKO</span>
+      <span>GARANSI 100% KOMPATIBILITAS HARDWARE &bull; ESTIMASI HARGA PASAR INDONESIA &bull; SIAP EKSPOR PDF
+        TOKO</span>
     </div>
   </aside>
 
   <!-- 2. NZXT-Style Header & Navigation Bar -->
   <header class="app-header">
     <div class="header-container">
-      
+
       <!-- Brand Logo -->
       <a href="#" class="brand-area group">
-        <div class="brand-badge-box">NZ</div>
+        <div class="brand-badge-box">P</div>
         <div>
           <span class="brand-title">PAYCOM</span>
-          <span class="brand-pill">BLD</span>
         </div>
       </a>
 
       <!-- Navigation Links ala NZXT -->
       <nav aria-label="Navigasi Utama">
         <ul class="nav-links">
-          <li><a href="#builder-section" class="nav-link">Konfigurator PC</a></li>
-          <li><a href="#player-series" class="nav-link">Player Series</a></li>
-          <li><a href="#keunggulan-bld" class="nav-link">Keunggulan</a></li>
-          <li><a href="#faq-section" class="nav-link">FAQ Hardware</a></li>
         </ul>
       </nav>
 
@@ -65,13 +65,17 @@
       <div class="header-tools">
         <!-- Wattage Calculator Ringkas di Kanan Atas (FR3) -->
         <div class="top-wattage-card" id="top-wattage-display" aria-live="polite">
-          <svg class="ui-icon text-purple-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-          <span class="wattage-val font-bold text-purple-400">0W</span> 
+          <svg class="ui-icon text-purple-400" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span class="wattage-val font-bold text-purple-400">0W</span>
           <span class="wattage-rec text-zinc-400 text-xs">(Pilih CPU/GPU)</span>
         </div>
 
         <!-- Tombol Penguji Kegagalan API Harga (Failure State 1 Tester) -->
-        <button type="button" class="btn btn-secondary btn-sm" id="btn-toggle-api-status" title="Uji penanganan kegagalan API Harga sesuai PRD">
+        <button type="button" class="btn btn-secondary btn-sm" id="btn-toggle-api-status"
+          title="Uji penanganan kegagalan API Harga sesuai PRD">
           Simulasi: API Normal
         </button>
 
@@ -87,7 +91,7 @@
     <!-- 3. NZXT High-Impact Hero Section (Pusat & Rapi) -->
     <section class="hero-section">
       <div class="hero-container">
-        
+
         <div class="hero-pill">
           <span class="hero-pill-dot"></span>
           <span>Intelligent Custom PC Builder</span>
@@ -99,16 +103,20 @@
         </h1>
 
         <p class="hero-desc">
-          Bangun komputer gaming dan kerja impian Anda dengan percaya diri. Sistem kami menyaring kecocokan socket processor, generasi RAM, kapasitas casing, hingga rekomendasi daya PSU secara otomatis.
+          Bangun komputer gaming dan kerja impian Anda dengan percaya diri. Sistem kami menyaring kecocokan socket
+          processor, generasi RAM, kapasitas casing, hingga rekomendasi daya PSU secara otomatis.
         </p>
 
         <div class="hero-actions">
           <a href="#builder-section" class="btn-hero-primary">
-            <span>Buka Konfigurator BLD</span>
-            <svg class="ui-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <span>Buka Konfigurator </span>
+            <svg class="ui-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
           </a>
           <a href="#player-series" class="btn-hero-secondary">
-            Lihat Player Series
+            Lihat Template Rakitan
           </a>
         </div>
 
@@ -139,11 +147,11 @@
     <section id="player-series" class="player-section">
       <div class="player-section-header">
         <div>
-          <span class="player-section-subtitle">Ready-To-Configure Templates</span>
-          <h2 class="player-section-title">The Player Series</h2>
+          <h2 class="player-section-title">Template Rakitan Siap Pakai</h2>
         </div>
         <p class="player-section-desc">
-          Pilihan rakitan yang dirancang khusus oleh teknisi hardware. Muat langsung ke dalam konfigurator dalam 1 klik untuk melihat rincian spesifikasi dan memodifikasi komponen.
+          Pilihan rakitan yang dirancang khusus oleh teknisi hardware. Muat langsung ke dalam konfigurator dalam 1 klik
+          untuk melihat rincian spesifikasi dan memodifikasi komponen.
         </p>
       </div>
 
@@ -153,44 +161,53 @@
         <article class="player-card">
           <div>
             <div class="player-illustration-wrap">
-              <svg class="player-illustration" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustrasi PC Player One">
-                <rect x="35" y="15" width="130" height="150" rx="8" fill="#121216" stroke="#2a2a32" stroke-width="2"/>
-                <rect x="39" y="19" width="122" height="142" rx="6" fill="#181820"/>
-                <path d="M140 19H161C163.761 19 166 21.2386 166 24V156C166 158.761 163.761 161 161 161H140V19Z" fill="#141418" stroke="#25252d" stroke-width="1.5"/>
-                <line x1="148" y1="30" x2="148" y2="150" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
-                <rect x="42" y="22" width="94" height="136" rx="4" fill="#0d0d12" stroke="#272730" stroke-width="1.5"/>
-                <rect x="48" y="28" width="82" height="85" rx="3" fill="#16161e"/>
-                <circle cx="78" cy="58" r="18" fill="#1f1f2a" stroke="#06b6d4" stroke-width="2.5"/>
-                <circle cx="78" cy="58" r="11" fill="#06b6d4" opacity="0.25"/>
-                <circle cx="78" cy="58" r="5" fill="#38bdf8"/>
-                <rect x="104" y="42" width="3" height="32" rx="1.5" fill="#06b6d4"/>
-                <rect x="110" y="42" width="3" height="32" rx="1.5" fill="#06b6d4"/>
-                <rect x="48" y="88" width="78" height="20" rx="3" fill="#22222d" stroke="#2d2d3c" stroke-width="1"/>
-                <rect x="52" y="92" width="70" height="4" rx="2" fill="#06b6d4" opacity="0.9"/>
-                <circle cx="70" cy="100" r="4" fill="#181822" stroke="#38bdf8" stroke-width="1"/>
-                <circle cx="95" cy="100" r="4" fill="#181822" stroke="#38bdf8" stroke-width="1"/>
-                <rect x="42" y="122" width="94" height="36" fill="#14141a" stroke="#252530" stroke-width="1"/>
-                <text x="50" y="144" fill="#52525b" font-size="8" font-family="monospace" font-weight="700">PAYCOM BLD</text>
-                <rect x="48" y="165" width="16" height="5" rx="2" fill="#27272a"/>
-                <rect x="136" y="165" width="16" height="5" rx="2" fill="#27272a"/>
+              <svg class="player-illustration" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-label="Ilustrasi PC Player One">
+                <rect x="35" y="15" width="130" height="150" rx="8" fill="#121216" stroke="#2a2a32" stroke-width="2" />
+                <rect x="39" y="19" width="122" height="142" rx="6" fill="#181820" />
+                <path d="M140 19H161C163.761 19 166 21.2386 166 24V156C166 158.761 163.761 161 161 161H140V19Z"
+                  fill="#141418" stroke="#25252d" stroke-width="1.5" />
+                <line x1="148" y1="30" x2="148" y2="150" stroke="#06b6d4" stroke-width="2" stroke-linecap="round"
+                  opacity="0.8" />
+                <rect x="42" y="22" width="94" height="136" rx="4" fill="#0d0d12" stroke="#272730" stroke-width="1.5" />
+                <rect x="48" y="28" width="82" height="85" rx="3" fill="#16161e" />
+                <circle cx="78" cy="58" r="18" fill="#1f1f2a" stroke="#06b6d4" stroke-width="2.5" />
+                <circle cx="78" cy="58" r="11" fill="#06b6d4" opacity="0.25" />
+                <circle cx="78" cy="58" r="5" fill="#38bdf8" />
+                <rect x="104" y="42" width="3" height="32" rx="1.5" fill="#06b6d4" />
+                <rect x="110" y="42" width="3" height="32" rx="1.5" fill="#06b6d4" />
+                <rect x="48" y="88" width="78" height="20" rx="3" fill="#22222d" stroke="#2d2d3c" stroke-width="1" />
+                <rect x="52" y="92" width="70" height="4" rx="2" fill="#06b6d4" opacity="0.9" />
+                <circle cx="70" cy="100" r="4" fill="#181822" stroke="#38bdf8" stroke-width="1" />
+                <circle cx="95" cy="100" r="4" fill="#181822" stroke="#38bdf8" stroke-width="1" />
+                <rect x="42" y="122" width="94" height="36" fill="#14141a" stroke="#252530" stroke-width="1" />
+                <text x="50" y="144" fill="#52525b" font-size="8" font-family="monospace" font-weight="700">PAYCOM
+                  </text>
+                <rect x="48" y="165" width="16" height="5" rx="2" fill="#27272a" />
+                <rect x="136" y="165" width="16" height="5" rx="2" fill="#27272a" />
               </svg>
             </div>
 
             <div class="player-meta-bar">
-              <span class="player-badge-pill bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">PLAYER: ONE</span>
+              <span class="player-badge-pill bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">PC-1</span>
               <span class="text-xs text-zinc-400 font-semibold">1080p Esports</span>
             </div>
 
             <h3 class="player-card-title">Esports &amp; Casual Gamer</h3>
             <p class="player-card-desc">
-              Konfigurasi efisien dan hemat daya untuk game kompetitif (Valorant, CS2, Dota 2, GTA V) dengan budget ramah pelajar.
+              Konfigurasi efisien dan hemat daya untuk game kompetitif (Valorant, CS2, Dota 2, GTA V) dengan budget
+              ramah pelajar.
             </p>
 
             <div class="player-specs-box">
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Intel Core i3-12100F Box</span></div>
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Sapphire Pulse RX 6600 8GB</span></div>
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Team Elite Plus 16GB DDR4</span></div>
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Kioxia Exceria 500GB NVMe</span></div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Intel Core i3-12100F Box</span>
+              </div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Sapphire Pulse RX 6600 8GB</span>
+              </div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Team Elite Plus 16GB DDR4</span>
+              </div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Kioxia Exceria 500GB NVMe</span>
+              </div>
             </div>
           </div>
 
@@ -200,7 +217,10 @@
               <div class="player-price-val text-emerald-400">Est. Rp 8.850.000</div>
             </div>
             <button type="button" class="btn-player-load" data-action="load-template" data-template-id="player-starter">
-              <svg class="ui-icon text-cyan-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <svg class="ui-icon text-cyan-400" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
               <span>Muat ke Builder</span>
             </button>
           </div>
@@ -211,48 +231,58 @@
           <div class="player-popular-badge">MOST POPULAR</div>
           <div>
             <div class="player-illustration-wrap">
-              <svg class="player-illustration" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustrasi PC Player Two">
-                <rect x="35" y="15" width="130" height="150" rx="8" fill="#121216" stroke="#2e2640" stroke-width="2"/>
-                <rect x="39" y="19" width="122" height="142" rx="6" fill="#161420"/>
-                <path d="M140 19H161C163.761 19 166 21.2386 166 24V156C166 158.761 163.761 161 161 161H140V19Z" fill="#13121a" stroke="#2d2642" stroke-width="1.5"/>
-                <circle cx="152" cy="55" r="11" stroke="#a855f7" stroke-width="2" fill="#1e1830"/>
-                <circle cx="152" cy="115" r="11" stroke="#a855f7" stroke-width="2" fill="#1e1830"/>
-                <rect x="42" y="22" width="94" height="136" rx="4" fill="#0d0c14" stroke="#362952" stroke-width="1.5"/>
-                <rect x="48" y="28" width="82" height="85" rx="3" fill="#171524"/>
-                <circle cx="78" cy="56" r="17" fill="#201a33" stroke="#a855f7" stroke-width="2.5"/>
-                <circle cx="78" cy="56" r="10" fill="#2b1f47" stroke="#c084fc" stroke-width="1.5"/>
-                <circle cx="78" cy="56" r="4" fill="#e9d5ff"/>
-                <rect x="52" y="24" width="74" height="6" rx="2" fill="#261e3d" stroke="#7c3aed" stroke-width="1"/>
-                <path d="M78 48 C78 36, 100 32, 106 30" stroke="#4c3d6e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                <path d="M82 50 C86 38, 108 34, 114 30" stroke="#3f325c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                <rect x="104" y="42" width="3" height="32" rx="1.5" fill="#c084fc"/>
-                <rect x="110" y="42" width="3" height="32" rx="1.5" fill="#a855f7"/>
-                <rect x="48" y="86" width="80" height="22" rx="3" fill="#221c33" stroke="#4c3875" stroke-width="1.5"/>
-                <rect x="52" y="90" width="72" height="4" rx="2" fill="#c084fc"/>
-                <circle cx="68" cy="100" r="4.5" fill="#191526" stroke="#a855f7" stroke-width="1"/>
-                <circle cx="92" cy="100" r="4.5" fill="#191526" stroke="#a855f7" stroke-width="1"/>
-                <rect x="42" y="122" width="94" height="36" fill="#13111c" stroke="#2e2545" stroke-width="1"/>
-                <text x="50" y="144" fill="#a855f7" font-size="8" font-family="monospace" font-weight="800">PLAYER TWO</text>
-                <rect x="48" y="165" width="16" height="5" rx="2" fill="#27272a"/>
-                <rect x="136" y="165" width="16" height="5" rx="2" fill="#27272a"/>
+              <svg class="player-illustration" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-label="Ilustrasi PC Player Two">
+                <rect x="35" y="15" width="130" height="150" rx="8" fill="#121216" stroke="#2e2640" stroke-width="2" />
+                <rect x="39" y="19" width="122" height="142" rx="6" fill="#161420" />
+                <path d="M140 19H161C163.761 19 166 21.2386 166 24V156C166 158.761 163.761 161 161 161H140V19Z"
+                  fill="#13121a" stroke="#2d2642" stroke-width="1.5" />
+                <circle cx="152" cy="55" r="11" stroke="#a855f7" stroke-width="2" fill="#1e1830" />
+                <circle cx="152" cy="115" r="11" stroke="#a855f7" stroke-width="2" fill="#1e1830" />
+                <rect x="42" y="22" width="94" height="136" rx="4" fill="#0d0c14" stroke="#362952" stroke-width="1.5" />
+                <rect x="48" y="28" width="82" height="85" rx="3" fill="#171524" />
+                <circle cx="78" cy="56" r="17" fill="#201a33" stroke="#a855f7" stroke-width="2.5" />
+                <circle cx="78" cy="56" r="10" fill="#2b1f47" stroke="#c084fc" stroke-width="1.5" />
+                <circle cx="78" cy="56" r="4" fill="#e9d5ff" />
+                <rect x="52" y="24" width="74" height="6" rx="2" fill="#261e3d" stroke="#7c3aed" stroke-width="1" />
+                <path d="M78 48 C78 36, 100 32, 106 30" stroke="#4c3d6e" stroke-width="2.5" fill="none"
+                  stroke-linecap="round" />
+                <path d="M82 50 C86 38, 108 34, 114 30" stroke="#3f325c" stroke-width="2.5" fill="none"
+                  stroke-linecap="round" />
+                <rect x="104" y="42" width="3" height="32" rx="1.5" fill="#c084fc" />
+                <rect x="110" y="42" width="3" height="32" rx="1.5" fill="#a855f7" />
+                <rect x="48" y="86" width="80" height="22" rx="3" fill="#221c33" stroke="#4c3875" stroke-width="1.5" />
+                <rect x="52" y="90" width="72" height="4" rx="2" fill="#c084fc" />
+                <circle cx="68" cy="100" r="4.5" fill="#191526" stroke="#a855f7" stroke-width="1" />
+                <circle cx="92" cy="100" r="4.5" fill="#191526" stroke="#a855f7" stroke-width="1" />
+                <rect x="42" y="122" width="94" height="36" fill="#13111c" stroke="#2e2545" stroke-width="1" />
+                <text x="50" y="144" fill="#a855f7" font-size="8" font-family="monospace" font-weight="800">PLAYER
+                  TWO</text>
+                <rect x="48" y="165" width="16" height="5" rx="2" fill="#27272a" />
+                <rect x="136" y="165" width="16" height="5" rx="2" fill="#27272a" />
               </svg>
             </div>
 
             <div class="player-meta-bar">
-              <span class="player-badge-pill bg-purple-500/20 text-purple-300 border border-purple-500/40">PLAYER: TWO</span>
+              <span class="player-badge-pill bg-purple-500/20 text-purple-300 border border-purple-500/40">PC-2</span>
               <span class="text-xs text-purple-300 font-semibold">1440p High FPS</span>
             </div>
 
             <h3 class="player-card-title">1440p Sweet Spot Gaming</h3>
             <p class="player-card-desc">
-              Kombinasi 6-core Intel Core i5 dengan GeForce RTX 4060 dan RAM 32GB untuk gaming AAA ultra serta video editing lancar.
+              Kombinasi 6-core Intel Core i5 dengan GeForce RTX 4060 dan RAM 32GB untuk gaming AAA ultra serta video
+              editing lancar.
             </p>
 
             <div class="player-specs-box">
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Intel Core i5-12400F Box</span></div>
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Colorful RTX 4060 8GB DLSS 3</span></div>
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Corsair LPX 32GB (2x16GB)</span></div>
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>ADATA Legend 850 1TB Gen4</span></div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Intel Core i5-12400F Box</span>
+              </div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Colorful RTX 4060 8GB DLSS
+                  3</span></div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Corsair LPX 32GB (2x16GB)</span>
+              </div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>ADATA Legend 850 1TB Gen4</span>
+              </div>
             </div>
           </div>
 
@@ -261,8 +291,12 @@
               <span class="player-price-label">Estimasi Siap Rakit</span>
               <div class="player-price-val text-purple-400">Est. Rp 14.890.000</div>
             </div>
-            <button type="button" class="btn-player-load" data-action="load-template" data-template-id="player-performance">
-              <svg class="ui-icon text-white" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <button type="button" class="btn-player-load" data-action="load-template"
+              data-template-id="player-performance">
+              <svg class="ui-icon text-white" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
               <span>Muat ke Builder</span>
             </button>
           </div>
@@ -272,49 +306,58 @@
         <article class="player-card">
           <div>
             <div class="player-illustration-wrap">
-              <svg class="player-illustration" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustrasi PC Player Three">
-                <rect x="30" y="12" width="140" height="154" rx="9" fill="#111413" stroke="#1b382d" stroke-width="2"/>
-                <rect x="34" y="16" width="132" height="146" rx="7" fill="#141a18"/>
-                <path d="M142 16H163C165.761 16 168 18.2386 168 21V157C168 159.761 165.761 162 163 162H142V16Z" fill="#101715" stroke="#1d4233" stroke-width="1.5"/>
-                <circle cx="155" cy="45" r="9" stroke="#10b981" stroke-width="2" fill="#122920"/>
-                <circle cx="155" cy="85" r="9" stroke="#10b981" stroke-width="2" fill="#122920"/>
-                <circle cx="155" cy="125" r="9" stroke="#10b981" stroke-width="2" fill="#122920"/>
-                <rect x="38" y="20" width="100" height="138" rx="5" fill="#0b110f" stroke="#1e4d3a" stroke-width="1.5"/>
-                <rect x="44" y="26" width="88" height="88" rx="3" fill="#131c19"/>
-                <rect x="48" y="23" width="80" height="7" rx="2" fill="#1a2e26" stroke="#10b981" stroke-width="1"/>
-                <rect x="70" y="48" width="22" height="22" rx="4" fill="#0e241c" stroke="#34d399" stroke-width="2"/>
+              <svg class="player-illustration" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-label="Ilustrasi PC Player Three">
+                <rect x="30" y="12" width="140" height="154" rx="9" fill="#111413" stroke="#1b382d" stroke-width="2" />
+                <rect x="34" y="16" width="132" height="146" rx="7" fill="#141a18" />
+                <path d="M142 16H163C165.761 16 168 18.2386 168 21V157C168 159.761 165.761 162 163 162H142V16Z"
+                  fill="#101715" stroke="#1d4233" stroke-width="1.5" />
+                <circle cx="155" cy="45" r="9" stroke="#10b981" stroke-width="2" fill="#122920" />
+                <circle cx="155" cy="85" r="9" stroke="#10b981" stroke-width="2" fill="#122920" />
+                <circle cx="155" cy="125" r="9" stroke="#10b981" stroke-width="2" fill="#122920" />
+                <rect x="38" y="20" width="100" height="138" rx="5" fill="#0b110f" stroke="#1e4d3a"
+                  stroke-width="1.5" />
+                <rect x="44" y="26" width="88" height="88" rx="3" fill="#131c19" />
+                <rect x="48" y="23" width="80" height="7" rx="2" fill="#1a2e26" stroke="#10b981" stroke-width="1" />
+                <rect x="70" y="48" width="22" height="22" rx="4" fill="#0e241c" stroke="#34d399" stroke-width="2" />
                 <text x="73" y="62" fill="#34d399" font-size="7" font-family="monospace" font-weight="900">42°C</text>
-                <path d="M82 48 C82 34, 102 32, 108 30" stroke="#4ade80" stroke-width="2" fill="none"/>
-                <path d="M86 50 C90 36, 110 34, 116 30" stroke="#22c55e" stroke-width="2" fill="none"/>
-                <rect x="104" y="40" width="3" height="34" rx="1.5" fill="#34d399"/>
-                <rect x="110" y="40" width="3" height="34" rx="1.5" fill="#10b981"/>
-                <rect x="44" y="86" width="88" height="26" rx="4" fill="#1c2b25" stroke="#295c47" stroke-width="1.5"/>
-                <rect x="48" y="90" width="80" height="4" rx="2" fill="#34d399"/>
-                <circle cx="58" cy="102" r="5" fill="#121e1a" stroke="#10b981" stroke-width="1"/>
-                <circle cx="78" cy="102" r="5" fill="#121e1a" stroke="#10b981" stroke-width="1"/>
-                <circle cx="98" cy="102" r="5" fill="#121e1a" stroke="#10b981" stroke-width="1"/>
-                <rect x="38" y="122" width="100" height="36" fill="#0f1714" stroke="#1a3d2e" stroke-width="1"/>
-                <text x="46" y="144" fill="#34d399" font-size="8" font-family="monospace" font-weight="900">PLAYER THREE 4K</text>
-                <rect x="44" y="166" width="18" height="5" rx="2" fill="#27272a"/>
-                <rect x="142" y="166" width="18" height="5" rx="2" fill="#27272a"/>
+                <path d="M82 48 C82 34, 102 32, 108 30" stroke="#4ade80" stroke-width="2" fill="none" />
+                <path d="M86 50 C90 36, 110 34, 116 30" stroke="#22c55e" stroke-width="2" fill="none" />
+                <rect x="104" y="40" width="3" height="34" rx="1.5" fill="#34d399" />
+                <rect x="110" y="40" width="3" height="34" rx="1.5" fill="#10b981" />
+                <rect x="44" y="86" width="88" height="26" rx="4" fill="#1c2b25" stroke="#295c47" stroke-width="1.5" />
+                <rect x="48" y="90" width="80" height="4" rx="2" fill="#34d399" />
+                <circle cx="58" cy="102" r="5" fill="#121e1a" stroke="#10b981" stroke-width="1" />
+                <circle cx="78" cy="102" r="5" fill="#121e1a" stroke="#10b981" stroke-width="1" />
+                <circle cx="98" cy="102" r="5" fill="#121e1a" stroke="#10b981" stroke-width="1" />
+                <rect x="38" y="122" width="100" height="36" fill="#0f1714" stroke="#1a3d2e" stroke-width="1" />
+                <text x="46" y="144" fill="#34d399" font-size="8" font-family="monospace" font-weight="900">PLAYER THREE
+                  4K</text>
+                <rect x="44" y="166" width="18" height="5" rx="2" fill="#27272a" />
+                <rect x="142" y="166" width="18" height="5" rx="2" fill="#27272a" />
               </svg>
             </div>
 
             <div class="player-meta-bar">
-              <span class="player-badge-pill bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">PLAYER: THREE</span>
+              <span class="player-badge-pill bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">PC-3</span>
               <span class="text-xs text-zinc-400 font-semibold">4K / Ray Tracing</span>
             </div>
 
             <h3 class="player-card-title">Flagship 4K &amp; Creator Station</h3>
             <p class="player-card-desc">
-              Monster bertenaga AMD Ryzen 7 7800X3D (3D V-Cache) dan RTX 4070 SUPER 12GB dengan memori DDR5 6000MHz performa tertinggi.
+              Monster bertenaga AMD Ryzen 7 7800X3D (3D V-Cache) dan RTX 4070 SUPER 12GB dengan memori DDR5 6000MHz
+              performa tertinggi.
             </p>
 
             <div class="player-specs-box">
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>AMD Ryzen 7 7800X3D Box</span></div>
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>ZOTAC RTX 4070 SUPER 12GB</span></div>
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Corsair 32GB DDR5 6000MHz</span></div>
-              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Samsung 980 PRO 1TB Gen4</span></div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>AMD Ryzen 7 7800X3D Box</span>
+              </div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>ZOTAC RTX 4070 SUPER 12GB</span>
+              </div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Corsair 32GB DDR5 6000MHz</span>
+              </div>
+              <div class="player-spec-row"><span class="player-spec-dot"></span><span>Samsung 980 PRO 1TB Gen4</span>
+              </div>
             </div>
           </div>
 
@@ -323,8 +366,12 @@
               <span class="player-price-label">Estimasi Siap Rakit</span>
               <div class="player-price-val text-emerald-400">Est. Rp 28.530.000</div>
             </div>
-            <button type="button" class="btn-player-load" data-action="load-template" data-template-id="player-ultimate">
-              <svg class="ui-icon text-emerald-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <button type="button" class="btn-player-load" data-action="load-template"
+              data-template-id="player-ultimate">
+              <svg class="ui-icon text-emerald-400" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
               <span>Muat ke Builder</span>
             </button>
           </div>
@@ -333,24 +380,31 @@
       </div>
     </section>
 
-    <!-- 5. THE CORE BLD CONFIGURATOR SECTION (FR1, FR2, FR3, FR4, FR5) -->
+    <!-- 5. THE CORE CONFIGURATOR SECTION (FR1, FR2, FR3, FR4, FR5) -->
     <section id="builder-section" class="builder-section">
       <div class="builder-header">
         <div class="builder-header-pill">
           <span class="builder-header-pill-dot"></span>
           <span class="builder-header-tag">Interactive Custom Rig Builder</span>
         </div>
-        <h2 class="builder-title">PayCom BLD Configurator</h2>
+        <h2 class="builder-title">PayCom Configurator</h2>
         <p class="builder-subtitle">
-          Pilih komponen secara bertahap. Sistem menyaring kompatibilitas socket processor, tipe memori RAM, dan form factor casing secara real-time.
+          Pilih komponen secara bertahap. Sistem menyaring kompatibilitas socket processor, tipe memori RAM, dan form
+          factor casing secara real-time.
         </p>
       </div>
 
       <!-- Banner Peringatan Gangguan API Harga (Failure State 1 PRD) -->
       <div id="api-status-banner" class="api-warning-banner hidden mb-6" role="alert">
         <div class="api-warning-content">
-          <svg class="ui-icon text-amber-400 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-          <span><strong>Layanan Harga sedang gangguan.</strong> Anda tetap bisa cek kompatibilitas dan menginput harga manual per komponen.</span>
+          <svg class="ui-icon text-amber-400 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span><strong>Layanan Harga sedang gangguan.</strong> Anda tetap bisa cek kompatibilitas dan menginput harga
+            manual per komponen.</span>
         </div>
       </div>
 
@@ -369,13 +423,21 @@
           <div class="summary-card">
             <div class="summary-header border-b border-zinc-800/80 pb-3 flex items-center justify-between">
               <h3 class="summary-title text-base font-bold text-white uppercase tracking-wider">Ringkasan Rakitan</h3>
-              <span class="text-[11px] font-mono text-zinc-500 uppercase">PAYCOM BLD</span>
+              <span class="text-[11px] font-mono text-zinc-500 uppercase">PAYCOM </span>
             </div>
 
             <!-- Indikator Status Kompatibilitas Besar -->
-            <div id="compatibility-status-badge" class="status-badge badge-incomplete p-3 rounded font-semibold text-xs sm:text-sm flex items-center gap-2.5 border transition-all" aria-live="polite">
+            <div id="compatibility-status-badge"
+              class="status-badge badge-incomplete p-3 rounded font-semibold text-xs sm:text-sm flex items-center gap-2.5 border transition-all"
+              aria-live="polite">
               <span class="badge-icon">
-                <svg class="ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <svg class="ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
               </span>
               <span class="badge-text">Konfigurasi Belum Lengkap</span>
             </div>
@@ -403,18 +465,26 @@
                 <span class="metric-value font-semibold text-purple-300" id="summary-psu-recommendation">-</span>
               </div>
 
-              <div class="metric-row metric-total flex justify-between items-baseline gap-2 pt-3 border-t border-dashed border-zinc-800">
+              <div
+                class="metric-row metric-total flex justify-between items-baseline gap-2 pt-3 border-t border-dashed border-zinc-800">
                 <span class="metric-label font-bold text-white text-sm uppercase">Total Estimasi Harga:</span>
-                <span class="metric-value font-black text-purple-400 text-lg sm:text-xl" id="summary-total-price">Est. Rp 0</span>
+                <span class="metric-value font-black text-purple-400 text-lg sm:text-xl" id="summary-total-price">Est.
+                  Rp 0</span>
               </div>
             </div>
 
             <!-- Panel Hardware Warnings (FR4) -->
             <div class="warnings-section flex flex-col gap-2">
-              <div class="warnings-header-label text-[11px] uppercase tracking-wider text-zinc-400 font-bold">Validasi Kompatibilitas</div>
+              <div class="warnings-header-label text-[11px] uppercase tracking-wider text-zinc-400 font-bold">Validasi
+                Kompatibilitas</div>
               <div id="hardware-warnings-panel" class="warnings-list flex flex-col gap-2" aria-live="assertive">
-                <div class="warning-empty text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 p-2.5 rounded flex items-center gap-2">
-                  <svg class="ui-icon text-emerald-400 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div
+                  class="warning-empty text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 p-2.5 rounded flex items-center gap-2">
+                  <svg class="ui-icon text-emerald-400 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
                   <span>Belum ada komponen yang dipilih.</span>
                 </div>
               </div>
@@ -422,16 +492,38 @@
 
             <!-- Tombol Aksi Ekspor (FR5) -->
             <div class="summary-actions flex flex-col gap-2 pt-2">
-              <button type="button" class="btn btn-primary btn-block w-full py-3 px-4 bg-purple-600 hover:bg-purple-500 disabled:bg-zinc-800 disabled:text-zinc-600 text-white rounded font-bold text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-lg shadow-purple-950/40" id="btn-export-build" disabled>
-                <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              <button type="button"
+                class="btn btn-primary btn-block w-full py-3 px-4 bg-purple-600 hover:bg-purple-500 disabled:bg-zinc-800 disabled:text-zinc-600 text-white rounded font-bold text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-lg shadow-purple-950/40"
+                id="btn-export-build" disabled>
+                <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
                 <span>Cetak / Simpan PDF</span>
               </button>
-              <button type="button" class="btn btn-secondary btn-block w-full py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-40 text-zinc-200 border border-zinc-700 rounded font-semibold text-xs transition-colors flex items-center justify-center gap-2" id="btn-copy-build" disabled>
-                <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+              <button type="button"
+                class="btn btn-secondary btn-block w-full py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-40 text-zinc-200 border border-zinc-700 rounded font-semibold text-xs transition-colors flex items-center justify-center gap-2"
+                id="btn-copy-build" disabled>
+                <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
                 <span>Salin Teks Ringkasan</span>
               </button>
-              <button type="button" class="btn btn-secondary btn-block w-full py-2 px-4 bg-transparent hover:bg-zinc-800 text-zinc-400 border border-zinc-800 rounded font-medium text-xs transition-colors flex items-center justify-center gap-2" id="btn-reset-build">
-                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg>
+              <button type="button"
+                class="btn btn-secondary btn-block w-full py-2 px-4 bg-transparent hover:bg-zinc-800 text-zinc-400 border border-zinc-800 rounded font-medium text-xs transition-colors flex items-center justify-center gap-2"
+                id="btn-reset-build">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                  <path d="M16 16h5v5"></path>
+                </svg>
                 <span>Reset Rakitan</span>
               </button>
             </div>
@@ -441,60 +533,9 @@
       </div>
     </section>
 
-    <!-- 6. NZXT Ecosystem / Value Proposition Section -->
-    <section id="keunggulan-bld" class="ecosystem-section">
-      <div class="ecosystem-header">
-        <span class="player-section-subtitle">Designed For Beginners</span>
-        <h2 class="player-section-title">Mengapa Memilih PayCom BLD?</h2>
-      </div>
-
-      <div class="ecosystem-grid">
-        <div class="ecosystem-card">
-          <div class="ecosystem-icon-box bg-purple-500/10 border border-purple-500/20 text-purple-400 font-bold">
-            <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          </div>
-          <h3 class="text-sm font-bold text-white uppercase mb-2">Validasi Socket Akurat</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            Menyaring otomatis motherboard dan RAM berdasarkan CPU pilihan. Terbebas dari risiko motherboard salah socket atau salah generasi memori.
-          </p>
-        </div>
-
-        <div class="ecosystem-card">
-          <div class="ecosystem-icon-box bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold">
-            <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-          </div>
-          <h3 class="text-sm font-bold text-white uppercase mb-2">Kalkulasi Daya Cerdas</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            Menghitung total daya konsumsi prosesor, kartu grafis, dan peripheral dengan margin keamanan 1.5x untuk stabilitas jangka panjang.
-          </p>
-        </div>
-
-        <div class="ecosystem-card">
-          <div class="ecosystem-icon-box bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold">
-            <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          </div>
-          <h3 class="text-sm font-bold text-white uppercase mb-2">Estimasi Harga Transparan</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            Memberikan patokan harga pasar online realistis dengan dukungan input manual jika layanan pihak ketiga mengalami gangguan.
-          </p>
-        </div>
-
-        <div class="ecosystem-card">
-          <div class="ecosystem-icon-box bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold">
-            <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-          </div>
-          <h3 class="text-sm font-bold text-white uppercase mb-2">Format Siap Toko Fisik</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            Simpan dalam lembar cetak PDF rapi atau salin ringkasan teks WhatsApp untuk langsung diserahkan kepada teknisi toko komputer offline.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- 7. FAQ Accordion Section -->
     <section id="faq-section" class="faq-section">
       <div class="faq-header">
-        <span class="player-section-subtitle">Hardware Knowledge</span>
         <h2 class="player-section-title">Pertanyaan yang Sering Diajukan</h2>
       </div>
 
@@ -502,40 +543,57 @@
         <div class="faq-item">
           <button type="button" class="faq-question-btn">
             <span>Bagaimana jika prosesor saya tidak memiliki kartu grafis internal (iGPU)?</span>
-            <svg class="faq-chevron ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <svg class="faq-chevron ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
           </button>
           <div class="faq-answer hidden">
-            Jika prosesor berakhiran F (seperti Intel i3-12100F atau i5-12400F), komputer wajib menggunakan VGA Card tambahan (GPU diskrit). Tanpa VGA, monitor tidak akan menampilkan sinyal gambar sama sekali.
+            Jika prosesor berakhiran F (seperti Intel i3-12100F atau i5-12400F), komputer wajib menggunakan VGA Card
+            tambahan (GPU diskrit). Tanpa VGA, monitor tidak akan menampilkan sinyal gambar sama sekali.
           </div>
         </div>
 
         <div class="faq-item">
           <button type="button" class="faq-question-btn">
             <span>Mengapa kapasitas Power Supply (PSU) yang disarankan lebih besar dari total daya?</span>
-            <svg class="faq-chevron ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <svg class="faq-chevron ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
           </button>
           <div class="faq-answer hidden">
-            Komponen komputer memiliki lonjakan daya sesaat (*transient power spike*) saat bermain game atau menjalankan beban komputasi berat. Margin 1.5x menjaga PSU bekerja pada rentang efisiensi puncak (50-70% beban) sehingga komponen lebih awet dan tidak mati mendadak.
+            Komponen komputer memiliki lonjakan daya sesaat (*transient power spike*) saat bermain game atau menjalankan
+            beban komputasi berat. Margin 1.5x menjaga PSU bekerja pada rentang efisiensi puncak (50-70% beban) sehingga
+            komponen lebih awet dan tidak mati mendadak.
           </div>
         </div>
 
         <div class="faq-item">
           <button type="button" class="faq-question-btn">
             <span>Apakah motherboard Micro-ATX (mATX) bisa dipasang di Casing ATX biasa?</span>
-            <svg class="faq-chevron ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <svg class="faq-chevron ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
           </button>
           <div class="faq-answer hidden">
-            Bisa. Casing ATX standar selalu mendukung motherboard berukuran lebih kecil seperti Micro-ATX dan Mini-ITX. Namun sebaliknya, motherboard ATX berukuran besar tidak akan muat jika dipasang di casing Mini-ITX.
+            Bisa. Casing ATX standar selalu mendukung motherboard berukuran lebih kecil seperti Micro-ATX dan Mini-ITX.
+            Namun sebaliknya, motherboard ATX berukuran besar tidak akan muat jika dipasang di casing Mini-ITX.
           </div>
         </div>
 
         <div class="faq-item">
           <button type="button" class="faq-question-btn">
             <span>Apakah estimasi harga ini merupakan harga jaminan pasti di toko fisik?</span>
-            <svg class="faq-chevron ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <svg class="faq-chevron ui-icon text-zinc-400" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
           </button>
           <div class="faq-answer hidden">
-            Harga yang dicantumkan merupakan estimasi rata-rata marketplace online Indonesia. Harga di toko fisik lokal dapat berbeda tergantung promo toko, garansi distributor, dan ketersediaan stok fisik.
+            Harga yang dicantumkan merupakan estimasi rata-rata marketplace online Indonesia. Harga di toko fisik lokal
+            dapat berbeda tergantung promo toko, garansi distributor, dan ketersediaan stok fisik.
           </div>
         </div>
       </div>
@@ -544,24 +602,26 @@
   </main>
 
   <!-- Modal Dialog Pemilihan Komponen (Pop-up Window FR1 & Custom Input Failure State 2) -->
-  <div id="component-modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-category-title">
+  <div id="component-modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true"
+    aria-labelledby="modal-category-title">
     <div class="modal-dialog bg-[#141417] border border-zinc-700">
       <div class="modal-header border-b border-zinc-800">
-        <h3 id="modal-category-title" class="modal-title text-base font-bold text-white uppercase tracking-wider">Pilih Komponen</h3>
-        <button type="button" class="btn btn-secondary btn-sm" id="btn-close-modal" aria-label="Tutup jendela pemilihan">
-          <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <h3 id="modal-category-title" class="modal-title text-base font-bold text-white uppercase tracking-wider">Pilih
+          Komponen</h3>
+        <button type="button" class="btn btn-secondary btn-sm" id="btn-close-modal"
+          aria-label="Tutup jendela pemilihan">
+          <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
 
       <!-- Kotak Pencarian Komponen -->
       <div class="modal-search-box border-b border-zinc-800">
-        <input 
-          type="text" 
-          id="modal-search-input" 
-          class="search-input bg-zinc-900 border border-zinc-700 text-white" 
-          placeholder="Ketik nama komponen atau nomor seri spesifikasi..." 
-          aria-label="Cari komponen"
-        />
+        <input type="text" id="modal-search-input" class="search-input bg-zinc-900 border border-zinc-700 text-white"
+          placeholder="Ketik nama komponen atau nomor seri spesifikasi..." aria-label="Cari komponen" />
       </div>
 
       <!-- Konten Daftar Komponen Terfilter Otomatis -->
@@ -574,7 +634,8 @@
         <div id="modal-custom-form" class="custom-component-form hidden">
           <h4>Input Komponen Custom</h4>
           <p class="body-secondary">
-            Gunakan fitur ini jika komponen incaran Anda tidak ada dalam daftar bawaan. Status rakitan akan berubah menjadi <em>"Kompatibilitas Custom Tidak Dijamin"</em>.
+            Gunakan fitur ini jika komponen incaran Anda tidak ada dalam daftar bawaan. Status rakitan akan berubah
+            menjadi <em>"Kompatibilitas Custom Tidak Dijamin"</em>.
           </p>
 
           <div class="form-group">
@@ -599,7 +660,11 @@
 
       <div class="modal-footer border-t border-zinc-800">
         <button type="button" class="btn btn-secondary btn-sm" id="btn-open-custom-form">
-          <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
           <span>Komponen Tidak Ada? Input Custom</span>
         </button>
       </div>
@@ -611,7 +676,7 @@
     <div class="print-header">
       <div class="print-brand">
         <h1>DAFTAR SPESIFIKASI RAKITAN PC</h1>
-        <p>Digenerate melalui PayCom BLD Builder - Format Validasi Toko Komputer &amp; Teknisi</p>
+        <p>Digenerate melalui PayCom Builder - Format Validasi Toko Komputer &amp; Teknisi</p>
       </div>
       <div class="print-meta">
         <div id="print-status-badge" class="print-badge">100% KOMPATIBEL</div>
@@ -647,8 +712,10 @@
 
     <div class="print-footer-info">
       <p><strong>Catatan Teknis untuk Toko/Teknisi:</strong></p>
-      <p>1. Daftar ini telah melalui pemeriksaan kompatibilitas otomatis meliputi socket prosesor, slot RAM, dan form factor motherboard.</p>
-      <p>2. Harga yang tercantum merupakan estimasi rata-rata online dan dapat berbeda dengan ketersediaan stok fisik di toko.</p>
+      <p>1. Daftar ini telah melalui pemeriksaan kompatibilitas otomatis meliputi socket prosesor, slot RAM, dan form
+        factor motherboard.</p>
+      <p>2. Harga yang tercantum merupakan estimasi rata-rata online dan dapat berbeda dengan ketersediaan stok fisik di
+        toko.</p>
     </div>
   </div>
 
@@ -660,39 +727,41 @@
     <div class="footer-container">
       <div class="footer-grid">
         <div>
-          <div class="text-white font-bold uppercase tracking-wider mb-3">PayCom BLD</div>
+          <div class="text-white font-bold uppercase tracking-wider mb-3">PayCom </div>
           <p class="leading-relaxed text-zinc-400 text-xs">
             Alat utilitas cerdas untuk memvalidasi rakitan komputer dan menghitung estimasi biaya secara otomatis.
           </p>
         </div>
         <div>
-          <div class="text-white font-bold uppercase tracking-wider mb-3">Player Series</div>
+          <div class="text-white font-bold uppercase tracking-wider mb-3">Developer Team</div>
           <ul class="space-y-2 text-zinc-400 text-xs">
-            <li><a href="#player-series" class="hover:text-purple-400 transition-colors">Player: One (1080p)</a></li>
-            <li><a href="#player-series" class="hover:text-purple-400 transition-colors">Player: Two (1440p)</a></li>
-            <li><a href="#player-series" class="hover:text-purple-400 transition-colors">Player: Three (4K Pro)</a></li>
+            <li><a href="#player-series" class="hover:text-purple-400 transition-colors">Devano Aghanza (211)</a></li>
+            <li><a href="#player-series" class="hover:text-purple-400 transition-colors">Iqodhul Himam (179)</a></li>
+            <li><a href="#player-series" class="hover:text-purple-400 transition-colors">Dicky Habib (208)</a></li>
           </ul>
         </div>
         <div>
           <div class="text-white font-bold uppercase tracking-wider mb-3">Fitur Cerdas</div>
           <ul class="space-y-2 text-zinc-400 text-xs">
-            <li><a href="#builder-section" class="hover:text-purple-400 transition-colors">Smart Component Selector</a></li>
-            <li><a href="#builder-section" class="hover:text-purple-400 transition-colors">Kalkulator Daya Wattage</a></li>
-            <li><a href="#builder-section" class="hover:text-purple-400 transition-colors">Hardware Warnings Engine</a></li>
+            <li><a href="#builder-section" class="hover:text-purple-400 transition-colors">Smart Component Selector</a>
+            </li>
+            <li><a href="#builder-section" class="hover:text-purple-400 transition-colors">Kalkulator Daya Wattage</a>
+            </li>
+            <li><a href="#builder-section" class="hover:text-purple-400 transition-colors">Hardware Warnings Engine</a>
+            </li>
           </ul>
         </div>
         <div>
           <div class="text-white font-bold uppercase tracking-wider mb-3">Bantuan &amp; Info</div>
           <ul class="space-y-2 text-zinc-400 text-xs">
-            <li><a href="#faq-section" class="hover:text-purple-400 transition-colors">Pertanyaan Umum (FAQ)</a></li>
-            <li><span class="text-zinc-500">Estimasi Harga Online IDR</span></li>
-            <li><span class="text-zinc-500">Standar Modul 1 Web UMM</span></li>
+            <li><a href="#faq-section" class="hover:text-purple-400 transition-colors">email : dikyhabib13@gmail.com </a></li>
           </ul>
         </div>
       </div>
 
-      <div class="pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-zinc-400 text-xs">
-        <div>&copy; 2026 PayCom BLD Platform. Alat utilitas gratis pemeriksa kompatibilitas komputer.</div>
+      <div
+        class="pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-zinc-400 text-xs">
+        <div>&copy; 2026 PayCom Platform. Alat utilitas gratis pemeriksa kompatibilitas komputer.</div>
         <div>Estimasi harga bersumber dari rata-rata online &bull; Bukan jaminan mutlak harga toko fisik.</div>
       </div>
     </div>
@@ -701,4 +770,5 @@
   <!-- Script Aplikasi Modular -->
   <script type="module" src="js/app.js"></script>
 </body>
+
 </html>
