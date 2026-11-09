@@ -517,7 +517,7 @@ export const COMPONENT_CATEGORIES = [
 export const PREBUILT_TEMPLATES = [
   {
     id: "player-starter",
-    badge: "PLAYER: ONE",
+    badge: "PC-1",
     title: "1080p Esports & Casual Rig",
     description: "Ideal untuk gaming kompetitif (Valorant, CS2, Dota 2, GTA V) dengan efisiensi daya maksimal dan budget ramah mahasiswa.",
     target_res: "1080p FHD",
@@ -535,7 +535,7 @@ export const PREBUILT_TEMPLATES = [
   },
   {
     id: "player-performance",
-    badge: "PLAYER: TWO",
+    badge: "PC-2",
     title: "1440p High-FPS Sweet Spot",
     description: "Kombinasi prosesor 6-core dengan RTX 4060 dan RAM 32GB untuk gaming AAA 1440p dengan DLSS 3 Frame Generation dan video editing.",
     target_res: "1440p QHD",
@@ -554,7 +554,7 @@ export const PREBUILT_TEMPLATES = [
   },
   {
     id: "player-ultimate",
-    badge: "PLAYER: THREE",
+    badge: "PC-3",
     title: "4K Flagship & Creative Station",
     description: "Monster gaming bertenaga Ryzen 7 7800X3D (3D V-Cache) dan RTX 4070 SUPER 12GB dengan RAM DDR5 6000MHz untuk resolusi 4K dan 3D rendering.",
     target_res: "4K UHD / Ray Tracing",
