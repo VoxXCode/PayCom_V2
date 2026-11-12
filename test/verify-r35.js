@@ -18,14 +18,17 @@ console.log("=== VERIFIKASI CLICK-THROUGH ELEMEN INTERAKTIF (R-35) ===");
 
 const logStep = (step, result) => console.log(`[VERIFIED] Langkah ${step}: ${result}`);
 
-// 1. Verifikasi File index.html dan elemen penting
-const htmlContent = fs.readFileSync("./index.html", "utf-8");
+// 1. Verifikasi File PHP MVC View dan elemen penting
+const htmlContent =
+  fs.readFileSync("./app/Views/layouts/header.php", "utf-8") +
+  fs.readFileSync("./app/Views/builder/index.php", "utf-8") +
+  fs.readFileSync("./app/Views/layouts/footer.php", "utf-8");
 if (htmlContent.includes("component-slots-container") &&
     htmlContent.includes("top-wattage-display") &&
     htmlContent.includes("hardware-warnings-panel") &&
     htmlContent.includes("btn-export-build") &&
     htmlContent.includes("component-modal-overlay")) {
-  logStep("1", "Markup HTML memuat seluruh container elemen inti (Header, Slots, Sidebar, Modal, Warnings, Print Sheet).");
+  logStep("1", "Markup View PHP MVC memuat seluruh container elemen inti (Header, Slots, Sidebar, Modal, Warnings, Print Sheet).");
 }
 
 // 2. Simulasi State Awal (Build Kosong)

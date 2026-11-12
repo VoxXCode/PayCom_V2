@@ -1,110 +1,90 @@
-# PayCom Builder: Platform Perakit PC Cerdas untuk Pemula (MVP)
+# PayCom BLD: Platform Perakit PC Cerdas (PHP MVC + MySQL PDO)
 
-Aplikasi web utilitas gratis untuk membantu orang awam dan pemula merakit PC secara terstruktur, aman dari risiko ketidakcocokan perangkat keras (*socket*, *chipset*, *form factor*), menghitung kebutuhan daya listrik (TDP & Wattage) secara otomatis, serta menampilkan estimasi harga *live* komponen komputer.
-
-Dibangun dengan mematuhi secara ketat spesifikasi pada [PRD.md](file:///c:/Users/Hp/Documents/Code/PayCom_V2/PRD.md) dan panduan desain visual pada [DESIGN_BRIEF.md](file:///c:/Users/Hp/Documents/Code/PayCom_V2/DESIGN_BRIEF.md).
+Aplikasi web **PHP MVC** dengan database **MySQL (PDO, Prepared Statements)** untuk membantu pemula merakit PC secara terstruktur, memvalidasi kompatibilitas perangkat keras (*socket*, *RAM type*, *form factor*, *iGPU*), menghitung kebutuhan daya listrik (*TDP & Wattage*), serta menyimpan dan mengelola daftar rakitan PC secara permanen.
 
 ---
 
-## Fitur Utama (Sesuai PRD MVP)
+## Pemenuhan Ketentuan Proyek Kelompok (Pengganti UAS)
 
-### 1. Smart Component Selector (FR1)
-- Alur pemilihan bertahap yang membimbing pemula: **CPU → Motherboard → RAM → GPU → Storage → PSU → Casing**.
-- Pilihan Motherboard otomatis terkunci (*disabled*) sebelum CPU dipilih.
-- Saat CPU dipilih, daftar Motherboard otomatis disaring secara *real-time* berdasarkan kesamaan *socket* (`cpu.socket == motherboard.socket`).
-- Pilihan RAM otomatis disaring berdasarkan tipe memori yang didukung oleh Motherboard (`DDR4` atau `DDR5`).
-- Pilihan Casing otomatis disaring berdasarkan kesesuaian ukuran *form factor* Motherboard (`ATX`, `mATX`, `Mini-ITX`).
+1. **Kelompok 3 Orang — Satu Repositori GitHub Bersama:**
+   - Anggota: `Dicky_208`, `Devano_211`, `Himam_179`
+   - Alur kerja Git: pembuatan *branch* per fitur (`fitur/...`), pengajuan *Pull Request* ke `master`, dan *code review* oleh rekan tim sebelum *merge*.
+2. **Aplikasi Web PHP dengan Arsitektur MVC + Database MySQL (PDO, Prepared Statement):**
+   - **Front Controller & Router:** `index.php`, `router.php`, `app/Core/Router.php`, `app/Core/Controller.php`, `app/Core/Database.php`
+   - **Models (PDO Prepared Statements):**
+     - `app/Models/ComponentModel.php` (tabel `components`)
+     - `app/Models/BuildModel.php` (tabel `pc_builds` & `build_items` dengan *database transaction*)
+   - **Controllers + Validasi Input:**
+     - `app/Controllers/BuilderController.php`
+     - `app/Controllers/ComponentController.php` (`validateComponentInput()`)
+     - `app/Controllers/BuildController.php` (`validateBuildInput()`)
+   - **Views:** `app/Views/layouts/*`, `app/Views/builder/*`, `app/Views/components/*`, `app/Views/builds/*`, `app/Views/errors/404.php`
+3. **Minimal 2 Tabel Database (Tersedia 3 Tabel Relasional):**
+   - `components` — Katalog komponen hardware (CPU, Motherboard, RAM, GPU, Storage, PSU, Casing)
+   - `pc_builds` — Data master rakitan PC tersimpan
+   - `build_items` — Relasi *foreign key* komponen per rakitan (`build_id -> pc_builds.id`, `component_id -> components.id`)
+4. **CRUD Lengkap (Create, Read, Update, Delete):**
+   - **Katalog Komponen (`/components`):** Tambah komponen, lihat/cari/filter katalog, ubah spesifikasi & harga, hapus komponen (dengan proteksi *foreign key*).
+   - **Rakitan PC (`/builds`):** Simpan rakitan (baik langsung dari Konfigurator maupun form PHP), lihat daftar & detail rakitan, edit metadata & komponen rakitan, hapus rakitan.
+5. **Rute GET & POST (10 Rute GET + 6 Rute POST):**
 
-### 2. Integrasi Estimasi Harga Live (FR2)
-- Menampilkan estimasi harga per komponen dan total biaya sistem.
-- Sesuai panduan UI/UX, seluruh harga berlabel **"Est."** (bukan harga mutlak toko fisik).
-- Menggunakan format mata uang Rupiah (`Rp`) yang rapi.
+| Method | Rute | Controller & Method | Fungsi |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/` | `BuilderController::index` | Halaman utama & Konfigurator PC Builder |
+| `GET` | `/api/components` | `BuilderController::apiComponents` | Endpoint JSON katalog komponen dari MySQL |
+| `GET` | `/api/price-estimate` | `BuilderController::apiPriceEstimate` | Endpoint status API estimasi harga |
+| `GET` | `/components` | `ComponentController::index` | Daftar & filter katalog komponen (Read) |
+| `GET` | `/components/create` | `ComponentController::create` | Form tambah komponen baru |
+| `POST` | `/components/store` | `ComponentController::store` | Validasi input & simpan komponen (Create) |
+| `GET` | `/components/edit` | `ComponentController::edit` | Form edit komponen |
+| `POST` | `/components/update` | `ComponentController::update` | Validasi input & perbarui komponen (Update) |
+| `POST` | `/components/delete` | `ComponentController::delete` | Hapus komponen (Delete) |
+| `GET` | `/builds` | `BuildController::index` | Daftar & filter rakitan tersimpan (Read) |
+| `GET` | `/builds/show` | `BuildController::show` | Detail lengkap komponen & daya rakitan (Read) |
+| `GET` | `/builds/create` | `BuildController::create` | Form buat rakitan baru |
+| `POST` | `/builds/store` | `BuildController::store` | Validasi input & simpan rakitan (Create) |
+| `GET` | `/builds/edit` | `BuildController::edit` | Form edit rakitan |
+| `POST` | `/builds/update` | `BuildController::update` | Validasi input & perbarui rakitan (Update) |
+| `POST` | `/builds/delete` | `BuildController::delete` | Hapus rakitan (Delete) |
 
-### 3. Wattage Calculator (FR3)
-- Kalkulasi otomatis total kebutuhan daya puncak sistem:
-  $$\text{Total Wattage} = \text{TDP CPU} + \text{TDP GPU} + 50\text{W (Baseline Mobo/SSD/Kipas)}$$
-- Rekomendasi kapasitas minimum Power Supply (PSU) aman dengan rumus:
-  $$\text{Rekomendasi PSU} = \text{Total Wattage} \times 1.5$$ (dibulatkan ke kelipatan 50W standar pasaran).
-- Tampilan indikator daya *live* di *top bar* (misal: `⚡ 350W`) dan rincian lengkap pada *sidebar*.
-
-### 4. Hardware Warnings Engine (FR4)
-- **Peringatan Kritis Output Grafis:** Jika prosesor yang dipilih tidak memiliki grafis internal (`cpu.has_igpu == false`) dan belum ada VGA tambahan yang dipilih, sistem menampilkan peringatan tebal berlatar Coral Red (`#EF4444`) dengan ikon ❌: *"PC Anda tidak akan menampilkan gambar tanpa VGA tambahan"*.
-- **Peringatan Kapasitas PSU:** Jika kapasitas PSU yang dipilih lebih kecil dari rekomendasi daya aman sistem, sistem menampilkan peringatan Amber (`#F59E0B`) dengan ikon ⚠️.
-- **Peringatan Form Factor:** Memperingatkan jika ukuran motherboard melebihi kapasitas fisik casing.
-
-### 5. Build Exporter (FR5)
-- **Cetak / Simpan PDF:** Format lembar cetak (*printable sheet*) profesional dengan tabel rapi, rincian per komponen, harga estimasi, total daya, dan stempel tebal **"100% KOMPATIBEL"**. Siap dicetak langsung atau disimpan sebagai PDF untuk dibawa ke toko fisik komputer.
-- **Salin Teks Ringkasan:** Menghasilkan ringkasan rapi dalam satu klik untuk dikirim via WhatsApp atau catatan ponsel ke teknisi/penjual toko.
-- **Reset Rakitan:** Mengosongkan seluruh slot rakitan dengan konfirmasi pengguna.
-
----
-
-## Penanganan Edge Case & Failure States
-
-1. **Failure State 1 (Layanan API Harga Gangguan/Rate Limit):**
-   - Web tetap berjalan normal tanpa *crash*.
-   - Muncul *banner* peringatan berwarna Amber: *"⚠️ Layanan Harga sedang gangguan. Anda tetap bisa cek kompatibilitas."*
-   - Label harga per komponen berubah menjadi *"Est. Rp - (Isi Manual)"* disertai kolom input harga manual.
-   - Total harga dan hasil ekspor memperhitungkan harga manual yang diinput pengguna.
-   - *Catatan Pengujian:* Tersedia tombol **"Simulasi: API Normal / Gangguan"** di *header* untuk menguji skenario ini secara langsung.
-
-2. **Failure State 2 (Komponen Tidak Ada di Basis Data):**
-   - Di dalam jendela pemilihan komponen, terdapat tombol **"＋ Komponen Tidak Ada? Input Custom"**.
-   - Pengguna dapat memasukkan nama, estimasi harga, dan spesifikasi teknis (*socket*, TDP, *form factor*, tipe RAM).
-   - Setelah ditambahkan, status rakitan otomatis berubah menjadi **"⚠️ Kompatibilitas Custom Tidak Dijamin"** sesuai ketentuan PRD.
-
-3. **Edge Case Penggantian Komponen di Tengah Sesi:**
-   - Jika pengguna mengganti CPU ke *socket* yang berbeda (misal dari Intel LGA1700 ke AMD AM5), sistem secara otomatis mereset slot Motherboard dan RAM terkait, disertai notifikasi transparan, agar pemula tidak bingung dengan konfigurasi yang bertabrakan.
+6. **Validasi Input di Controller:**
+   - `ComponentController::validateComponentInput()` memvalidasi kategori *enum*, panjang nama, harga bulat positif, rentang TDP & kapasitas PSU, format *socket*, tipe RAM (`DDR4`/`DDR5`), *form factor* (`ATX`/`mATX`/`ITX`), dan ringkasan spesifikasi.
+   - `BuildController::validateBuildInput()` memvalidasi nama rakitan, nama perakit, tujuan penggunaan (*whitelist*), panjang catatan, keberadaan ID/slug komponen serta kesesuaian kategori di tabel `components`, serta menghitung ulang total harga, wattage, dan status kompatibilitas di server (`CompatibilityService::evaluate()`).
 
 ---
 
-## Standar Desain Visual, Tailwind CSS v4 & Aksesibilitas
+## Cara Menjalankan Aplikasi (Laragon / XAMPP / PHP CLI)
 
-- **Integrasi Tailwind CSS v4 ([src/main.css](file:///c:/Users/Hp/Documents/Code/PayCom_V2/src/main.css)):**
-  - Menerapkan konfigurasi `@theme` sesuai Modul 1 Hal. 20 untuk mendefinisikan variabel tema warna modern (`--color-brand-bg`, `--color-brand-surface`, `--color-brand-blue`, dll).
-  - Menggunakan utilitas kelas Tailwind CSS (`flex`, `grid`, `rounded-*`, `p-*`, `m-*`, breakpoint `md:`, `lg:`).
-  - Terdapat **Hero Section** interaktif di bagian atas yang menyajikan pengenalan alur rakitan pemula.
-  - Setiap slot kartu komponen terisi dan kartu modal dilengkapi foto/ilustrasi hardware (`<img>`) sesuai standar Codelab Modul 1.
-- **Palet Warna Dark Mode Terkalibrasi:**
-  - Latar Belakang Utama: `#121212` (bukan hitam pekat `#000000` demi kenyamanan mata).
-  - Kartu/Surface: `#1E1E1E`, Hover: `#2C2C2C`.
-  - Tombol Utama: Electric Blue `#3B82F6` (Hover `#2563EB`, Disabled `#3F3F46`).
-  - Teks Utama: `#FFFFFF` (Rasio kontras > 16:1, melebihi standar WCAG AA 4.5:1).
-  - Teks Sekunder: `#A1A1AA` (Rasio kontras 6.5:1 - 7.3:1).
-- **Tipografi:** Sans-serif sistem berkecepatan tinggi dengan skala hierarki H1 32px, H2 24px, Body 16px, Caption 14px.
-- **Spacing & Radius:** Sistem *base-8* (8px, 16px, 24px, 32px), radius sudut konsisten 8px.
-- **Aksesibilitas Manusia & Layar:**
-  - Area klik tombol minimal **44x44 pixel** untuk kemudahan klik *trackpad* atau sentuhan jempol di ponsel.
-  - Indikator ganda (*dual indicators*): warna selalu didampingi teks deskriptif dan ikon simbolik (Centang ✅, Peringatan ⚠️, Silang ❌) untuk kemudahan pengguna buta warna.
-  - Navigasi keyboard penuh (`Tab`, `Shift+Tab`, `Enter`, dan `Escape` untuk menutup dialog modal).
-  - *Responsive layout*: reflow mulus di layar laptop, tablet, dan smartphone tanpa *overflow* horizontal.
-
----
-
-## Cara Menjalankan Aplikasi
-
-Aplikasi dibangun menggunakan arsitektur web modern tanpa ketergantungan paket berat pihak ketiga sehingga dapat langsung dijalankan:
-
-### Opsi 1: Menjalankan Server Lokal (Node.js)
+### 1. Impor Database MySQL
+Jalankan MySQL pada Laragon/XAMPP, lalu impor berkas `database/paycom_builder.sql` melalui phpMyAdmin, HeidiSQL, atau terminal:
 ```bash
-# Jalankan server native
-node server.js
+mysql -u root < database/paycom_builder.sql
 ```
-Buka peramban (*browser*) Anda dan akses:
-```
-http://localhost:3000
-```
+Secara default `config/database.php` terhubung ke:
+- Host: `127.0.0.1` (Port `3306`)
+- Database: `paycom_builder`
+- User: `root` (Password kosong, dapat diubah via *environment variable* `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`).
 
-### Opsi 2: Buka Langsung Berkas HTML
-Anda juga dapat membuka berkas [index.html](file:///c:/Users/Hp/Documents/Code/PayCom_V2/index.html) langsung dengan klik ganda (*double-click*) di File Explorer atau membukanya di browser apa pun (Chrome, Edge, Firefox, Safari).
+### 2. Jalankan Web Server PHP
+**Opsi A — PHP Built-in Server:**
+```bash
+php -S localhost:8000 router.php
+```
+Lalu buka `http://localhost:8000` di browser.
+
+**Opsi B — Laragon / XAMPP Apache:**
+Letakkan folder proyek di `laragon/www/PayCom_V2` (atau `htdocs/PayCom_V2`), nyalakan Apache + MySQL, dan akses `http://localhost/PayCom_V2/`.
 
 ---
 
-## Menjalankan Pengujian Otomatis (Automated Tests)
+## Pengujian Otomatis
 
-Untuk memvalidasi seluruh fungsi logika kompatibilitas, kalkulator daya, dan ekspor data:
+1. **Pengujian Sintaks, Controller Validation, CompatibilityService, & Router PHP:**
+```bash
+php test/php-mvc-test.php
+```
+2. **Pengujian Engine JavaScript & Verifikasi UI Interaktif:**
 ```bash
 node test/run-tests.js
+node test/verify-r35.js
 ```
-Hasil pengujian: **15 skenario pengujian unit & integrasi lulus (100% PASS)**.
-

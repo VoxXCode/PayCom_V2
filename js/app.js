@@ -37,16 +37,65 @@ const state = {
   toastTimeout: null
 };
 
+// Mengambil katalog aktif (MySQL via PHP jika tersedia, atau fallback data statis)
+function getActiveDatabase() {
+  const dbSource = typeof window !== "undefined" && window.__PAYCOM_DB_COMPONENTS__
+    ? window.__PAYCOM_DB_COMPONENTS__
+    : HARDWARE_DATABASE;
+
+  const normalized = {};
+  Object.keys(dbSource).forEach((cat) => {
+    normalized[cat] = (dbSource[cat] || []).map((item) => ({
+      ...item,
+      image: item.image || COMPONENT_IMAGES[cat] || null
+    }));
+  });
+  return normalized;
+}
+
 // Inisialisasi DOM setelah halaman selesai dimuat
 document.addEventListener("DOMContentLoaded", () => {
   initApp();
 });
 
 function initApp() {
+  hydratePreloadedBuild();
   renderComponentSlots();
   updateSummary();
   setupEventListeners();
   setupKeyboardAccessibility();
+}
+
+function hydratePreloadedBuild() {
+  if (typeof window === "undefined" || !window.__PAYCOM_PRELOADED_BUILD__) {
+    return;
+  }
+
+  const loaded = window.__PAYCOM_PRELOADED_BUILD__;
+  const db = getActiveDatabase();
+
+  if (loaded.items) {
+    Object.entries(loaded.items).forEach(([cat, item]) => {
+      const matched = (db[cat] || []).find((c) => c.id === item.slug || String(c.db_id) === String(item.component_id));
+      if (matched) {
+        state.build[cat] = { ...matched };
+        if (item.custom_price !== null && item.custom_price !== undefined) {
+          state.build[cat].manual_price = parseInt(item.custom_price, 10) || 0;
+          setManualPrice(cat, state.build[cat].manual_price);
+        }
+      }
+    });
+  }
+
+  const nameInput = document.getElementById("builder-save-name");
+  const authorInput = document.getElementById("builder-save-author");
+  const purposeSelect = document.getElementById("builder-save-purpose");
+  const notesInput = document.getElementById("builder-save-notes");
+
+  if (nameInput && !nameInput.value) nameInput.value = `${loaded.build_name || ""} (Salinan)`;
+  if (authorInput && !authorInput.value) authorInput.value = loaded.builder_name || "";
+  if (purposeSelect && loaded.purpose) purposeSelect.value = loaded.purpose;
+  if (notesInput && !notesInput.value) notesInput.value = loaded.notes || "";
 }
 
 // ----------------------------------------------------
@@ -280,13 +329,30 @@ function updateSummary() {
     }
   }
 
-  // Disable / Enable Export Button jika build benar-benar kosong
+  // Disable / Enable Export & Simpan DB Button jika build benar-benar kosong
   const exportBtn = document.getElementById("btn-export-build");
   const copyBtn = document.getElementById("btn-copy-build");
+  const saveDbBtn = document.getElementById("btn-save-build-db");
   const hasAnyComponent = Object.values(state.build).some((c) => c !== null);
 
   if (exportBtn) exportBtn.disabled = !hasAnyComponent;
   if (copyBtn) copyBtn.disabled = !hasAnyComponent;
+  if (saveDbBtn) {
+    const hasDbSelected = Object.values(state.build).some((c) => c !== null && (c.db_id || !c.is_custom));
+    saveDbBtn.disabled = !hasDbSelected;
+  }
+
+  // Sinkronkan komponen terpilih ke hidden inputs form simpan database MySQL
+  Object.entries(state.build).forEach(([cat, comp]) => {
+    const idInput = document.getElementById(`db-input-${cat}`);
+    const priceInput = document.getElementById(`db-price-${cat}`);
+    if (idInput) {
+      idInput.value = comp && !comp.is_custom ? (comp.db_id || comp.id || "") : "";
+    }
+    if (priceInput) {
+      priceInput.value = comp && comp.manual_price !== undefined ? String(comp.manual_price) : "";
+    }
+  });
 
   // Update printable preview elements jika sedang diprint
   updatePrintSheet(wattageInfo, compatibilityInfo, priceInfo);
@@ -393,7 +459,7 @@ function renderModalList() {
   const category = state.modal.currentCategory;
   
   // Terapkan Smart Filtering Compatibility (FR1 & Edge Cases)
-  const filteredByCategory = filterAvailableComponents(category, state.build, HARDWARE_DATABASE);
+  const filteredByCategory = filterAvailableComponents(category, state.build, getActiveDatabase());
   
   // Terapkan search query
   const query = state.modal.searchQuery.toLowerCase().trim();
@@ -469,7 +535,7 @@ function renderModalList() {
 }
 
 function selectComponentById(category, id) {
-  const item = (HARDWARE_DATABASE[category] || []).find((c) => c.id === id);
+  const item = (getActiveDatabase()[category] || []).find((c) => c.id === id);
   if (!item) return;
 
   // Proteksi & Penanganan Edge Case PRD:
@@ -906,8 +972,9 @@ function loadPrebuiltTemplate(templateId) {
   });
 
   // Masukkan komponen dari template
+  const db = getActiveDatabase();
   Object.entries(template.components).forEach(([category, compId]) => {
-    const item = (HARDWARE_DATABASE[category] || []).find((c) => c.id === compId);
+    const item = (db[category] || []).find((c) => c.id === compId);
     if (item) {
       state.build[category] = item;
     }
